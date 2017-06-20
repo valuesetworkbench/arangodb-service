@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0">
+	<OCD description="ArangoDB Service" name="ArangoDB Service" id="edu.mayo.cts2.framework.plugin.service.arangodb">
+		<AD name="ArangoDB Database" id="database" required="false" type="String" default="cts2" />
+        <AD name="ArangoDB Host" id="database.host" required="false" type="String" default="localhost"/>
+        <AD name="ArangoDB Port" id="database.port" required="false" type="String" default="8529"/>
+        <AD name="Elasticsearch Host" id="index.host" required="false" type="String" default="localhost"/>
+        <AD name="Elasticsearch Port" id="index.port" required="false" type="String" default="9300"/>
+        <AD name="Elasticsearch Cluster Name" id="index.clustername" required="false" type="String" default="elasticsearch"/>
+        <AD name="Elasticsearch Index Name" id="index" required="false" type="String" default="cts2"/>
+    </OCD>
+	<Designate pid="edu.mayo.cts2.framework.plugin.service.arangodb">
+        <Object ocdref="edu.mayo.cts2.framework.plugin.service.arangodb" />
+    </Designate>
+	
+</metatype:MetaData>

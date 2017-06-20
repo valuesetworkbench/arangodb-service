@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "arangoDbId": {
+      "type": "string",
+      "index": "no",
+      "store": true
+    },
+    "designations": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "index": "not_analyzed",
+      "store": true
+    },
+    "namespace": {
+      "type": "string",
+      "index": "not_analyzed",
+      "store": true
+    },
+    "codeSystemVersion": {
+      "type": "string",
+      "index": "not_analyzed",
+      "store": true
+    },
+    "uri": {
+      "type": "string",
+      "index": "not_analyzed",
+      "store": true
+    }
+  }
+}
+

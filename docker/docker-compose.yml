@@ -1,0 +1,26 @@
+arango:
+  image: arangodb:2.8.7
+  ports:
+    - "8529:8529"
+  environment:
+    - ARANGO_NO_AUTH=1
+
+cts2-elasticsearch:
+  image: elasticsearch:2.0.2
+  volumes:
+  - "/opt/cts2/esdata:/usr/share/elasticsearch/data"
+  ports:
+  - "9201:9200"
+  - "9301:9300"
+
+cts2:
+  build: cts2
+  container_name: cts2
+  ports:
+    - "9999:8080"
+    - "62911:62911"
+  links:
+    - "arango:arango"
+    - "cts2-elasticsearch:cts2-elasticsearch"
+  environment:
+    - SERVER_ROOT=${SERVER_ROOT}

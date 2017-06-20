@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "arangoDbId": {
+      "type": "string",
+      "index": "no",
+      "store": true
+    },
+    "resourceSynopsis": {
+      "type": "string"
+    },
+    "formalName": {
+      "type": "string"
+    },
+    "valueSet": {
+      "type": "string",
+      "index": "not_analyzed"
+    },
+    "valueSetAnalyzed": {
+      "type": "string",
+      "analyzer": "simple"
+    },
+    "officialResourceVersionId": {
+      "type": "string",
+      "analyzer": "simple"
+    },
+    "owner": {
+      "type": "string",
+      "index": "not_analyzed"
+    },
+    "uri": {
+      "type": "string",
+      "index": "not_analyzed",
+      "store": true
+    }
+  }
+}
+
