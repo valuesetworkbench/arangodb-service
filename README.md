@@ -1,16 +1,38 @@
-example-service - An Example CTS2 Development Framework Service Plugin
-======================
+# ArangoDB CTS2 Service
 
-example-service is a demonstration Service Plugin for the CTS2 Development Framework.
+A [CTS2-compliant](http://www.omg.org/spec/CTS2/) terminology service based on the [ArangoDB](https://www.arangodb.com/) graph database.
 
-Plugin Tutorial
-==================================
+# Installation
+## Via Docker Compose
 
-This plugin is used in the tutorial http://informatics.mayo.edu/cts2/framework/example-plugin-tutorial/
+The below Docker Compose file can be used to start the CTS2 service with its prerequisite services.
 
+```YAML
+# AraangoDB
+arango:
+  image: arangodb:2.8.7
+  ports:
+    - "8529:8529"
+  environment:
+    - ARANGO_NO_AUTH=1
 
-What It Includes
-==============================
+# Elasticsearch
+cts2-elasticsearch:
+  image: elasticsearch:2.0.2
+  ports:
+  - "9201:9200"
+  - "9301:9300"
 
-* An example ServiceProvider implementation
-* An example CodeSystemCatalogRead Service implementation
+# CTS2 Service
+cts2:
+  image: valuesetworkbench/arangodb-service
+  container_name: cts2
+  ports:
+    - "9999:8080"
+    - "62911:62911"
+  links:
+    - "arango:arango"
+    - "cts2-elasticsearch:cts2-elasticsearch"
+  environment:
+    - SERVER_ROOT=http://your/server/name # <- CHANGE THIS
+```
