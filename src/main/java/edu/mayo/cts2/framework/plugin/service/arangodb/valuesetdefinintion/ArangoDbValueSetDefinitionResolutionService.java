@@ -364,7 +364,13 @@ public class ArangoDbValueSetDefinitionResolutionService extends AbstractArangoD
 
     @Override
     public ResolvedValueSet resolveDefinitionAsCompleteSet(ValueSetDefinitionReadId definitionId, Set<NameOrURI> codeSystemVersions, NameOrURI tag, SortCriteria sortCriteria, ResolvedReadContext readContext) {
-        throw new UnsupportedOperationException("not implemented");
+        ResolvedValueSetResult<URIAndEntityName> result = this.resolveDefinition(definitionId, codeSystemVersions, tag, sortCriteria, readContext, null);
+
+        ResolvedValueSet resolvedValueSet = new ResolvedValueSet();
+        resolvedValueSet.setResolutionInfo(result.getResolvedValueSetHeader());
+        resolvedValueSet.setEntry(result.getEntries());
+
+        return resolvedValueSet;
     }
 
     @Override

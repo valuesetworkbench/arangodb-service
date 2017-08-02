@@ -99,6 +99,23 @@ class ArangoDbValueSetDefinitionResolutionServiceTest extends DbClearingTest {
     }
 
     @Test
+    void testResolveSpecificEntitiesAsCompleteSet() {
+
+        def entries = (1..100).inject([]) { result, i -> result + new URIAndEntityName(uri: "foo$i", name: "test$i", namespace: "ns") }
+
+        maintService.createResource(
+                new ValueSetDefinition(
+                        about: "http://uri",
+                        definedValueSet: new ValueSetReference(content: "test"),
+                        entry:[new ValueSetDefinitionEntry(entityList:
+                                new SpecificEntityList(referencedEntity: entries))]))
+
+        def resolution = service.resolveDefinitionAsCompleteSet(new ValueSetDefinitionReadId("http://uri"), null, null, null, null)
+
+        assertEquals 100, resolution.entry.size()
+    }
+
+    @Test
     void testResolveSpecificEntitiesAsEntityDirectory() {
         entityMaintService.createResource(
                 new EntityDescription(
