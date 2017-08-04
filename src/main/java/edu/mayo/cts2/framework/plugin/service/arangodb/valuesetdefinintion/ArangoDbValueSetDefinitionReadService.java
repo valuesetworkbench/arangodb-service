@@ -11,6 +11,7 @@ import edu.mayo.cts2.framework.plugin.service.arangodb.AbstractArangoDbLocalIdRe
 import edu.mayo.cts2.framework.plugin.service.arangodb.AqlQuery;
 import edu.mayo.cts2.framework.plugin.service.arangodb.ArangoDbServiceConstants;
 import edu.mayo.cts2.framework.plugin.service.arangodb.StorageInfo;
+import edu.mayo.cts2.framework.service.profile.valuesetdefinition.ValueSetDefinitionHistoryService;
 import edu.mayo.cts2.framework.service.profile.valuesetdefinition.ValueSetDefinitionReadService;
 import edu.mayo.cts2.framework.service.profile.valuesetdefinition.name.ValueSetDefinitionReadId;
 import org.apache.commons.lang.StringUtils;
@@ -22,7 +23,8 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class ArangoDbValueSetDefinitionReadService extends AbstractArangoDbLocalIdReadService<LocalIdValueSetDefinition, ValueSetDefinition, ValueSetDefinitionReadId> implements ValueSetDefinitionReadService {
+public class ArangoDbValueSetDefinitionReadService extends AbstractArangoDbLocalIdReadService<LocalIdValueSetDefinition, ValueSetDefinition, ValueSetDefinitionReadId>
+        implements ValueSetDefinitionReadService, ValueSetDefinitionHistoryService {
 
     @Resource
     private ValueSetDefinitionStorageInfo valueSetDefinitionStorageInfo;
