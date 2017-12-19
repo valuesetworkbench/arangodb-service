@@ -1,6 +1,7 @@
 package edu.mayo.cts2.framework.plugin.service.arangodb.codesystemversion;
 
 import com.arangodb.entity.marker.VertexEntity;
+import com.google.common.collect.Sets;
 import edu.mayo.cts2.framework.model.codesystemversion.CodeSystemVersionCatalogEntry;
 import edu.mayo.cts2.framework.model.codesystemversion.CodeSystemVersionCatalogEntryListEntry;
 import edu.mayo.cts2.framework.model.codesystemversion.CodeSystemVersionCatalogEntrySummary;
@@ -23,6 +24,13 @@ public class ArangoDbCodeSystemVersionQueryService extends AbstractArangoDbDefau
 
     @Resource
     private CodeSystemVersionStorageInfo codeSystemVersionStorageInfo;
+
+    private Set<String> indexSearchFields = Sets.newHashSet(
+            "resourceSynopsis",
+            "formalName",
+            "valueSetAnalyzed",
+            "officialResourceVersionId"
+    );
 
     protected CodeSystemVersionCatalogEntrySummary toDirectoryEntry(VertexEntity<CodeSystemVersionCatalogEntry> node) {
         CodeSystemVersionCatalogEntry resource = node.getEntity();

@@ -34,6 +34,7 @@ import edu.mayo.cts2.framework.service.profile.entitydescription.EntityDescripti
 import edu.mayo.cts2.framework.service.profile.entitydescription.EntityDescriptionQueryService;
 import org.apache.commons.collections.CollectionUtils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
@@ -286,7 +287,7 @@ public class ArangoDbEntityDescriptionQueryService extends AbstractArangoDbDefau
         BoolQueryBuilder queryBuilder = new BoolQueryBuilder();
 
         for(ResolvedFilter filter : filters) {
-            queryBuilder.must(QueryBuilders.matchQuery("designations", filter.getMatchValue()));
+            queryBuilder.must(QueryBuilders.matchQuery("designations", filter.getMatchValue()).operator(MatchQueryBuilder.Operator.AND));
         }
 
         if(query != null && query.getRestrictions() != null && CollectionUtils.isNotEmpty(query.getRestrictions().getCodeSystemVersions())) {

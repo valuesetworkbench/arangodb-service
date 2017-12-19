@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
+    <parent>
 		<groupId>edu.mayo.cts2.framework</groupId>
 		<artifactId>cts2-base-service-plugin</artifactId>
 		<version>1.2.2-SNAPSHOT</version>
@@ -191,12 +191,26 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>edu.mayo.cts2.framework</groupId>
+			<artifactId>cts2-webapp-rest-extensions</artifactId>
+			<version>${develpment.framework.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
             <version>${org.springframework-version}</version>
 			<scope>provided</scope>
         </dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+			<scope>provided</scope>
+		</dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -296,6 +310,25 @@
 			<groupId>javax.annotation</groupId>
 			<artifactId>jsr250-api</artifactId>
 			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-structures-dstu3</artifactId>
+			<version>3.1.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>

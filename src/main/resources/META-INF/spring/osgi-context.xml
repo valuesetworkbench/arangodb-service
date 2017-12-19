@@ -11,6 +11,8 @@
 
 	<osgi:service ref="arangoDbServiceProvider" interface="edu.mayo.cts2.framework.service.provider.ServiceProvider"/>
 
+	<osgi:service ref="fhirValueSetController" interface="edu.mayo.cts2.framework.webapp.rest.extensions.controller.ControllerProvider"/>
+
 	<osgi:reference id="serverContext" interface="edu.mayo.cts2.framework.core.config.ServerContext"/>
 
 	<osgi:reference id="cts2Marshaller" interface="edu.mayo.cts2.framework.core.xml.Cts2Marshaller"/>
