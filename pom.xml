@@ -192,6 +192,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.github.rahulsom</groupId>
+			<artifactId>ihe-iti</artifactId>
+			<version>0.9</version>
+		</dependency>
+
+		<dependency>
 			<groupId>edu.mayo.cts2.framework</groupId>
 			<artifactId>cts2-webapp-rest-extensions</artifactId>
 			<version>${develpment.framework.version}</version>
